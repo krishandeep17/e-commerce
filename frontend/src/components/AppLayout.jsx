@@ -1,15 +1,19 @@
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 import Footer from "./Footer";
 import Header from "./Header";
+import Services from "./Services";
 
 export default function AppLayout() {
   return (
-    <Container maxWidth="lg">
+    <>
       <Header />
-      <Outlet />
+      <Box component="main">
+        <Outlet />
+        <Services />
+      </Box>
       <Footer />
-    </Container>
+    </>
   );
 }
