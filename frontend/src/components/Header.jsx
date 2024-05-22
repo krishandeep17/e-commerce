@@ -1,8 +1,7 @@
-import { Link, Stack, useMediaQuery } from "@mui/material";
+import { Container, Stack, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Link as RouterLink } from "react-router-dom";
 
-import logo from "../assets/logos/logo-black.svg";
+import Logo from "./Logo";
 import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";
 
@@ -17,28 +16,21 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
-    <Stack
-      component="header"
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      py={4}
-    >
-      <Link component={RouterLink} to="/">
-        <img
-          src={logo}
-          width={170}
-          height={28}
-          alt="E-Commerce Logo"
-          loading="lazy"
-        />
-      </Link>
+    <Container maxWidth="lg" component="header">
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        py={4}
+      >
+        <Logo />
 
-      {isMobile ? (
-        <MobileNav navLinks={navLinks} />
-      ) : (
-        <MainNav navLinks={navLinks} />
-      )}
-    </Stack>
+        {isMobile ? (
+          <MobileNav navLinks={navLinks} />
+        ) : (
+          <MainNav navLinks={navLinks} />
+        )}
+      </Stack>
+    </Container>
   );
 }
