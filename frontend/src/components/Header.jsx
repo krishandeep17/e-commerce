@@ -23,7 +23,7 @@ export default function Header() {
         alignItems="center"
         py={4}
       >
-        <Logo />
+        <Logo width="180" height="30" />
 
         {isMobile ? (
           <MobileNav navLinks={navLinks} />

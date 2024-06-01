@@ -15,6 +15,7 @@ export default function MainNav({ navLinks }) {
             component={RouterLink}
             to="/login"
             variant="contained"
+            sx={{ textTransform: "none" }}
           >
             Login
           </Button>

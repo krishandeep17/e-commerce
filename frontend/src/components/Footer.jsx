@@ -52,7 +52,7 @@ export default function Footer() {
           mt={{ xxs: 4, sm: 0 }}
           textAlign={{ xxs: "center", sm: "inherit" }}
         >
-          <Logo color="white" />
+          <Logo color="white" width="180" height="30" />
 
           <Typography variant="body1">
             &copy; {currentYear} E-Commerce. All Rights are reserved
