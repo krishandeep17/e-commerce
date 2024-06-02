@@ -4,11 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import AppLayout from "./components/AppLayout";
 import Cart from "./pages/Cart";
+import CreateAccount from "./pages/CreateAccount";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
+import RecoverPassword from "./pages/RecoverPassword";
 import theme from "./theme";
 
 export default function App() {
@@ -25,7 +27,9 @@ export default function App() {
             <Route path="cart" element={<Cart />} />
           </Route>
 
-          <Route path="/login" element={<Login />} />
+          <Route path="login" element={<Login />} />
+          <Route path="create-account" element={<CreateAccount />} />
+          <Route path="recover-password" element={<RecoverPassword />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
