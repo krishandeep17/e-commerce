@@ -1,5 +1,4 @@
 import { Box, Button, Link, Stack, TextField } from "@mui/material";
-
 import { Link as RouterLink } from "react-router-dom";
 
 export default function LoginForm() {
@@ -15,16 +14,16 @@ export default function LoginForm() {
   };
 
   return (
-    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
       <TextField
         type="email"
-        margin="normal"
-        required
-        fullWidth
+        name="email"
         id="email"
         label="Email Address"
-        name="email"
         autoComplete="email"
+        margin="normal"
+        fullWidth
+        required
         autoFocus
       />
       <TextField
@@ -37,7 +36,7 @@ export default function LoginForm() {
         fullWidth
         required
       />
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button type="submit" fullWidth variant="contained" sx={{ my: 3 }}>
         Login
       </Button>
 

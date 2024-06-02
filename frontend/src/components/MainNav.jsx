@@ -6,7 +6,12 @@ export default function MainNav({ navLinks }) {
     <Stack component="nav" direction="row" alignItems="center" spacing={3}>
       {navLinks.map((link) =>
         link.type !== "button" ? (
-          <Link key={link.title} component={RouterLink} to={link.url}>
+          <Link
+            key={link.title}
+            component={RouterLink}
+            to={link.url}
+            underline="none"
+          >
             {link.title}
           </Link>
         ) : (
