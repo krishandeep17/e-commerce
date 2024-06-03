@@ -1,74 +1,89 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Link, Stack, TextField, Typography } from "@mui/material";
+import { useForm } from "react-hook-form";
 import { Link as RouterLink } from "react-router-dom";
 
+import { CreateAccountSchema } from "./authModel";
+
 export default function CreateAccountForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(CreateAccountSchema) });
 
-    const data = new FormData(event.currentTarget);
+  function onSubmit({ firstName, lastName, email, password, passwordConfirm }) {
+    if (!firstName || !lastName || !email || !password || !passwordConfirm)
+      return;
 
-    console.log({
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      password: data.get("password"),
-      passwordConfirm: data.get("passwordConfirm"),
-    });
+    console.log({ firstName, lastName, email, password, passwordConfirm });
 
-    event.currentTarget.reset();
-  };
+    reset();
+  }
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+    <Box
+      component="form"
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+      sx={{ mt: 1 }}
+    >
       <Stack direction={{ xxs: "column", sm: "row" }} columnGap={3}>
         <TextField
-          name="firstName"
-          id="firstName"
           label="First Name"
           autoComplete="given-name"
           margin="normal"
           fullWidth
           required
           autoFocus
+          {...register("firstName")}
+          error={Boolean(errors?.firstName)}
+          helperText={errors?.firstName?.message}
         />
         <TextField
-          name="lastName"
-          id="lastName"
           label="Last Name"
           autoComplete="family-name"
           margin="normal"
           fullWidth
           required
+          {...register("lastName")}
+          error={Boolean(errors?.lastName)}
+          helperText={errors?.lastName?.message}
         />
       </Stack>
       <TextField
         type="email"
-        name="email"
-        id="email"
         label="Email Address"
         autoComplete="email"
         margin="normal"
         fullWidth
         required
+        autoFocus
+        {...register("email")}
+        error={Boolean(errors?.email)}
+        helperText={errors?.email?.message}
       />
       <TextField
         type="password"
-        name="password"
-        id="password"
         label="Password"
         autoComplete="current-password"
         margin="normal"
         fullWidth
         required
+        {...register("password")}
+        error={Boolean(errors?.password)}
+        helperText={errors?.password?.message}
       />
       <TextField
         type="password"
-        name="passwordConfirm"
-        id="passwordConfirm"
         label="Confirm Password"
         margin="normal"
         fullWidth
         required
+        {...register("passwordConfirm")}
+        error={Boolean(errors?.passwordConfirm)}
+        helperText={errors?.passwordConfirm?.message}
       />
       <Button type="submit" fullWidth variant="contained" sx={{ my: 3 }}>
         Sign up
