@@ -29,7 +29,7 @@ export default function CreateAccountForm() {
       onSubmit={handleSubmit(onSubmit)}
       sx={{ mt: 1 }}
     >
-      <Stack direction={{ xxs: "column", sm: "row" }} columnGap={3}>
+      <Stack direction={{ xs: "column", sm: "row" }} columnGap={3}>
         <TextField
           label="First Name"
           autoComplete="given-name"
@@ -59,7 +59,6 @@ export default function CreateAccountForm() {
         margin="normal"
         fullWidth
         required
-        autoFocus
         {...register("email")}
         error={Boolean(errors?.email)}
         helperText={errors?.email?.message}
@@ -86,12 +85,17 @@ export default function CreateAccountForm() {
         helperText={errors?.passwordConfirm?.message}
       />
       <Button type="submit" fullWidth variant="contained" sx={{ my: 3 }}>
-        Sign up
+        Sign Up
       </Button>
 
       <Typography>
         Already have an account?{" "}
-        <Link component={RouterLink} to="/login" underline="always">
+        <Link
+          component={RouterLink}
+          to="/login"
+          underline="hover"
+          fontWeight="500"
+        >
           Login
         </Link>
       </Typography>

@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function Header() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Container maxWidth="lg" component="header">
@@ -25,7 +25,7 @@ export default function Header() {
       >
         <Logo width="180" height="30" />
 
-        {isMobile ? (
+        {isSmallScreen ? (
           <MobileNav navLinks={navLinks} />
         ) : (
           <MainNav navLinks={navLinks} />

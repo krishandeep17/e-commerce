@@ -50,7 +50,7 @@ export default function MobileNav({ navLinks }) {
         }}
         open={Boolean(openNavMenu)}
         onClose={handleCloseNavMenu}
-        sx={{ mt: "50px" }}
+        sx={{ mt: 6.25 }}
       >
         {navLinks.map((link) =>
           link.type !== "button" ? (

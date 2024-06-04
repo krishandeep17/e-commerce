@@ -7,7 +7,7 @@ export default function CreateAccount() {
     <AuthLayout
       heroImg={heroImg}
       heading="Create Account"
-      subHeading="Please enter details"
+      subHeading="Give us some of your information for sign up."
     >
       <CreateAccountForm />
     </AuthLayout>

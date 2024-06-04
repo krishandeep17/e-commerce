@@ -18,24 +18,24 @@ export default function AuthLayout({
   heroImg,
   heading,
   subHeading,
-  style = { mt: { xxs: 10, sm: 0 } },
+  style = { mt: { xs: 10, sm: 0 } },
   type = "",
   children,
 }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Grid
       container
       component="main"
+      minHeight="100svh"
       sx={{
         position: "relative",
-        minHeight: "100vh",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundImage: { xxs: `url(${heroImg})`, sm: "none" },
+        backgroundImage: { xs: `url(${heroImg})`, sm: "none" },
       }}
     >
       <Logo
@@ -43,16 +43,16 @@ export default function AuthLayout({
         height="34"
         sx={{
           position: "absolute",
-          top: "24px",
-          left: { xxs: "50%", sm: "24px" },
-          transform: { xxs: "translateX(-50%)", sm: "none" },
+          top: 24,
+          left: { xs: "50%", sm: 24 },
+          transform: { xs: "translateX(-50%)", sm: "none" },
           zIndex: 10,
         }}
       />
 
       <Grid
         item
-        xxs={false}
+        xs={false}
         sm={4}
         md={7}
         sx={{
@@ -63,19 +63,19 @@ export default function AuthLayout({
         }}
       />
 
-      <Grid item xxs={12} sm={8} md={5} sx={{ backdropFilter: "blur(1px)" }}>
+      <Grid item xs={12} sm={8} md={5} sx={{ backdropFilter: "blur(1px)" }}>
         <Stack
           direction="column"
           justifyContent="center"
           alignItems="center"
           height="100%"
-          px={{ xxs: 2, sm: 0 }}
-          pb={{ xxs: 2, sm: 0 }}
+          px={{ xs: 2, sm: 0 }}
+          pb={{ xs: 2, sm: 0 }}
         >
           <Container
             maxWidth="sm"
             component={Paper}
-            elevation={isMobile ? 4 : 0}
+            elevation={isSmallScreen ? 4 : 0}
             sx={{ py: 4, ...style }}
           >
             {type === "recover-password" ? (
@@ -114,7 +114,7 @@ export default function AuthLayout({
               </Stack>
             )}
 
-            <Typography color="brand.gray">{subHeading}</Typography>
+            <Typography color="brand.gray_500">{subHeading}</Typography>
 
             {children}
           </Container>

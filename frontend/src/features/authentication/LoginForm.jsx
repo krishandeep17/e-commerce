@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, Link, Stack, TextField } from "@mui/material";
+import { Box, Button, Link, Stack, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -63,11 +63,19 @@ export default function LoginForm() {
         rowGap={0.25}
         columnGap={3}
       >
-        <Link component={RouterLink} to="/create-account" underline="always">
-          Create an account
-        </Link>
-        <Link component={RouterLink} to="/recover-password" underline="always">
-          Recover your password
+        <Typography>
+          Don&#39;t have an account?{" "}
+          <Link
+            component={RouterLink}
+            to="/create-account"
+            underline="hover"
+            fontWeight="500"
+          >
+            Sign Up
+          </Link>
+        </Typography>
+        <Link component={RouterLink} to="/recover-password" underline="hover">
+          Forgot password?
         </Link>
       </Stack>
     </Box>

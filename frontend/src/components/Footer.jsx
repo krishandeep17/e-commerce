@@ -37,28 +37,26 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      py={{ xxs: 6, sm: 4 }}
+      py={{ xs: 7, sm: 5 }}
       bgcolor="primary.main"
       color={grey["A100"]}
     >
       <Container maxWidth="lg">
         <Stack
-          direction={{ xxs: "column", sm: "row" }}
-          justifyContent={{ xxs: "center", sm: "space-between" }}
+          direction={{ xs: "column", sm: "row" }}
+          justifyContent={{ xs: "center", sm: "space-between" }}
           alignItems="center"
           flexWrap="wrap"
-          rowGap={2}
-          columnGap={3}
-          mt={{ xxs: 4, sm: 0 }}
-          textAlign={{ xxs: "center", sm: "inherit" }}
+          rowGap={4}
+          columnGap={6}
         >
           <Logo color="white" width="180" height="30" />
 
-          <Typography variant="body1">
+          <Typography textAlign="center">
             &copy; {currentYear} E-Commerce. All Rights are reserved
           </Typography>
 
-          <Stack direction="row" alignItems="center" gap={3}>
+          <Stack direction="row" alignItems="center" spacing={6}>
             {socialLinks.map((socialLink) => (
               <Link
                 key={socialLink.title}
@@ -75,7 +73,7 @@ export default function Footer() {
                       sx: {
                         [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
                           {
-                            marginTop: "6px",
+                            marginTop: 1,
                           },
                       },
                     },

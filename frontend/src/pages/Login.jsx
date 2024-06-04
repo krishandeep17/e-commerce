@@ -6,8 +6,8 @@ export default function Login() {
   return (
     <AuthLayout
       heroImg={heroImg}
-      heading="Welcome"
-      subHeading="Please login here"
+      heading="Welcome back!"
+      subHeading="Please enter your details to login."
       style={{
         "@media (max-height: 600px)": {
           mt: 10,
