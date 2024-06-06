@@ -1,4 +1,4 @@
-import heroImg from "../assets/heros/login.svg";
+import heroImg from "../assets/heros/login-hero.svg";
 import AuthLayout from "../features/authentication/AuthLayout";
 import LoginForm from "../features/authentication/LoginForm";
 

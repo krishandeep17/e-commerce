@@ -11,7 +11,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
 
-import handImg from "../../assets/images/hand.png";
+import handImg from "../../assets/images/wave-hand.png";
 import Logo from "../../components/Logo";
 
 export default function AuthLayout({
@@ -95,13 +95,13 @@ export default function AuthLayout({
                   <Typography fontSize="1.125rem">Back</Typography>
                 </Link>
 
-                <Typography component="h2" variant="h4" mb={1}>
+                <Typography component="h3" variant="h4" mb={1}>
                   {heading}
                 </Typography>
               </>
             ) : (
               <Stack direction="row" spacing={1} alignItems="center" mb={1}>
-                <Typography component="h2" variant="h4">
+                <Typography component="h3" variant="h4">
                   {heading}
                 </Typography>
                 <img

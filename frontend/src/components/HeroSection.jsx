@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import heroImg from "../assets/heros/hero-1.png";
+import heroImg from "../assets/heros/home-hero.png";
 
 export default function HeroSection() {
   return (

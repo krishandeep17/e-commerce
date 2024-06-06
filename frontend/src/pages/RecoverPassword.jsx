@@ -1,4 +1,4 @@
-import heroImg from "../assets/heros/recover-password.svg";
+import heroImg from "../assets/heros/recover-password-hero.svg";
 import AuthLayout from "../features/authentication/AuthLayout";
 import RecoverPasswordForm from "../features/authentication/RecoverPasswordForm";
 
