@@ -44,7 +44,7 @@ export default function Services() {
             <Typography variant="h6" fontWeight="700" mt={0.5}>
               {service.title}
             </Typography>
-            <Typography variant="body1">{service.description}</Typography>
+            <Typography>{service.description}</Typography>
           </Grid>
         ))}
       </Grid>

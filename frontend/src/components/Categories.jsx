@@ -10,12 +10,19 @@ export default function Categories() {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
+        spacing={2}
+        flexWrap="wrap"
         mb={6}
       >
-        <Typography variant="h5" component="h2" fontWeight="400">
+        <Typography component="h2" variant="h3">
           Shop by Categories
         </Typography>
-        <Link component={RouterLink} to="/products" underline="none">
+        <Link
+          component={RouterLink}
+          to="/products"
+          underline="none"
+          lineHeight="normal"
+        >
           Show All
         </Link>
       </Stack>
