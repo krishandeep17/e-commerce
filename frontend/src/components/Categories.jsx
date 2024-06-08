@@ -32,7 +32,10 @@ export default function Categories() {
           <Grid item xs={12} sm={6} md={4} key={category.title}>
             <Link
               component={RouterLink}
-              to="/products"
+              to={`/products?categories=${category.title
+                .toLowerCase()
+                .replaceAll("&", "and")
+                .replaceAll(" ", "-")}`}
               underline="none"
               p={2.5}
               minHeight={360}
