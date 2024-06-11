@@ -2,6 +2,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import {
   Box,
   Button,
+  Fade,
   IconButton,
   Menu,
   MenuItem,
@@ -24,7 +25,7 @@ export default function MobileNav({ navLinks }) {
   };
   return (
     <Box>
-      <Tooltip title="Open menu">
+      <Tooltip TransitionComponent={Fade} title="Open menu">
         <IconButton
           size="large"
           aria-label="menu"

@@ -41,7 +41,7 @@ export default function Services() {
         {services.map((service) => (
           <Grid item key={service.title} xs={12} sm={6} md={3}>
             {service.icon}
-            <Typography variant="h6" fontWeight="700" mt={0.5}>
+            <Typography component="h5" variant="h6" fontWeight="700" mt={0.5}>
               {service.title}
             </Typography>
             <Typography>{service.description}</Typography>

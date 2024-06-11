@@ -2,6 +2,7 @@ import { GitHub, Instagram, LinkedIn } from "@mui/icons-material";
 import {
   Box,
   Container,
+  Fade,
   Link,
   Stack,
   Tooltip,
@@ -67,13 +68,16 @@ export default function Footer() {
                 lineHeight="0"
               >
                 <Tooltip
+                  TransitionComponent={Fade}
                   title={socialLink.title}
+                  placement="top"
+                  arrow
                   slotProps={{
                     popper: {
                       sx: {
-                        [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
+                        [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
                           {
-                            marginTop: 1,
+                            marginBottom: "10px",
                           },
                       },
                     },
