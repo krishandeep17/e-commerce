@@ -2,19 +2,16 @@ import { Box } from "@mui/material";
 
 import Filter from "../../components/Filter";
 import SortBy from "../../components/SortBy";
-import { categories } from "../../data/categories";
+import { categories } from "../../data/data-categories";
 
 const filterOptions = categories.map((category) => ({
-  value: category.title
-    .toLowerCase()
-    .replaceAll("&", "and")
-    .replaceAll(" ", "-"),
-  label: category.title,
+  value: category.value,
+  label: category.label,
 }));
 
 const sortByOptions = [
-  { value: "-createdAt", label: "Latest" },
-  { value: "createdAt", label: "Oldest" },
+  { value: "createdAt-desc", label: "Latest" },
+  { value: "createdAt-asc", label: "Oldest" },
 ];
 
 export default function ProductOperations() {
@@ -22,7 +19,7 @@ export default function ProductOperations() {
     <Box>
       <Filter
         label="Product Categories"
-        filterField="categories"
+        filterField="category"
         filterOptions={filterOptions}
       />
 

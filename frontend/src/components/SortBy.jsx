@@ -29,6 +29,10 @@ export default function SortBy({ sortByOptions }) {
         aria-labelledby="sort-by"
         value={sortBy}
         name="radio-buttons-group"
+        sx={{
+          flexDirection: { xs: "column", sm: "row", md: "column" },
+          columnGap: 2,
+        }}
       >
         {sortByOptions.map((option) => (
           <FormControlLabel
