@@ -1,7 +1,7 @@
 import { Container, Grid, Link, Stack, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import { categories } from "../data/categories";
+import { categories } from "../data/data-categories";
 
 export default function Categories() {
   return (
@@ -29,13 +29,10 @@ export default function Categories() {
 
       <Grid container spacing={4}>
         {categories.map((category) => (
-          <Grid item xs={12} sm={6} md={4} key={category.title}>
+          <Grid item xs={12} sm={6} md={4} key={category.value}>
             <Link
               component={RouterLink}
-              to={`/products?categories=${category.title
-                .toLowerCase()
-                .replaceAll("&", "and")
-                .replaceAll(" ", "-")}`}
+              to={`/products?category=${category.value}`}
               underline="none"
               p={2.5}
               minHeight={360}
@@ -57,7 +54,7 @@ export default function Categories() {
                 textAlign="center"
                 bgcolor="brand.gray_50"
               >
-                {category.title}
+                {category.label}
               </Typography>
             </Link>
           </Grid>
