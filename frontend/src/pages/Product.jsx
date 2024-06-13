@@ -1,8 +1,5 @@
-import { Box } from "@mui/material";
-import { useParams } from "react-router-dom";
+import ProductDetail from "../features/products/ProductDetail";
 
 export default function Product() {
-  const { id } = useParams();
-
-  return <Box>Product: {id}</Box>;
+  return <ProductDetail />;
 }
