@@ -18,8 +18,10 @@ import {
   MILLISECONDS_PER_HOUR,
   MILLISECONDS_PER_MINUTE,
   MILLISECONDS_PER_SECOND,
-  OFFER_LAST_DATE,
 } from "../utils/constants";
+
+const ONGOING_DEALS_LAST_DATE = new Date();
+ONGOING_DEALS_LAST_DATE.setDate(ONGOING_DEALS_LAST_DATE.getDate() + 7);
 
 function StatBox({ label, value }) {
   return (
@@ -40,8 +42,8 @@ function StatBox({ label, value }) {
   );
 }
 
-export default function Promotion() {
-  const [hasOffer, setHasOffer] = useState(true);
+export default function OngoingDeals() {
+  const [hasOngoingDeal, setHasOngoingDeal] = useState(true);
   const [time, setTime] = useState([
     { label: "days", value: 0 },
     { label: "hours", value: 0 },
@@ -54,7 +56,7 @@ export default function Promotion() {
       const currentTime = new Date();
 
       const timeDifference = Math.max(
-        Number(OFFER_LAST_DATE) - Number(currentTime),
+        Number(ONGOING_DEALS_LAST_DATE) - Number(currentTime),
         0
       );
 
@@ -80,7 +82,7 @@ export default function Promotion() {
       ]);
 
       if (timeDifference === 0) {
-        setHasOffer(false);
+        setHasOngoingDeal(false);
         clearInterval(timerInterval);
       }
     }, 1000);
@@ -89,7 +91,7 @@ export default function Promotion() {
   }, []);
 
   return (
-    hasOffer && (
+    hasOngoingDeal && (
       <Container maxWidth="lg" component="section" sx={{ mt: 12.5 }}>
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>

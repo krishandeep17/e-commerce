@@ -1,13 +1,13 @@
 import Categories from "../components/Categories";
 import HeroSection from "../components/HeroSection";
-import Promotion from "../components/Promotion";
+import OngoingDeals from "../components/OngoingDeals";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <Categories />
-      <Promotion />
+      <OngoingDeals />
     </>
   );
 }
