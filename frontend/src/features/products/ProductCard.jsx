@@ -12,24 +12,17 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 
 import { formatCurrency } from "../../utils/helpers.js";
+import ProductImage from "../../components/ProductImage.jsx";
 
 export default function ProductCard({ product }) {
   return (
     <Grid item xs={12} sm={6} lg={4}>
-      <Paper variant="outlined">
-        <Box component="picture" bgcolor="brand.gray_100" p={4}>
-          <img
-            src={product.image}
-            width="231"
-            height="231"
-            alt={`${product.name} Image`}
-            loading="lazy"
-            style={{
-              objectFit: "contain",
-              aspectRatio: "1",
-            }}
-          />
-        </Box>
+      <Paper variant="outlined" sx={{ overflow: "hidden" }}>
+        <ProductImage
+          src={product.image}
+          size="231"
+          alt={`${product.name} Image`}
+        />
 
         <Stack spacing={1.25} p={3} pt={2.5}>
           <Typography
@@ -94,6 +87,7 @@ export default function ProductCard({ product }) {
             <Tooltip TransitionComponent={Fade} title="Add to cart">
               <Button
                 variant="contained"
+                aria-label="cart"
                 sx={{
                   fontSize: 26,
                   flexShrink: 1,
