@@ -29,10 +29,10 @@ export default function Categories() {
 
       <Grid container spacing={4}>
         {categories.map((category) => (
-          <Grid item xs={12} sm={6} md={4} key={category.value}>
+          <Grid item xs={12} sm={6} md={4} key={category.label}>
             <Link
               component={RouterLink}
-              to={`/products?category=${category.value}`}
+              to={`/products?category=${category.label.toLowerCase()}`}
               underline="none"
               p={2.5}
               minHeight={360}

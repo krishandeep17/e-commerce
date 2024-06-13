@@ -8,32 +8,26 @@ import watchesImg from "../assets/categories/watches-category.png";
 export const categories = [
   {
     label: "Watches",
-    value: "watch",
     image: watchesImg,
   },
   {
-    label: "TV & Home",
-    value: "tv-and-home",
+    label: "TV",
     image: tvImg,
   },
   {
     label: "iPads",
-    value: "ipad",
     image: ipadsImg,
   },
   {
     label: "Accessories",
-    value: "accessory",
     image: accessoriesImg,
   },
   {
     label: "Laptops",
-    value: "laptop",
     image: laptopsImg,
   },
   {
     label: "Phones",
-    value: "phone",
     image: phonesImg,
   },
 ];

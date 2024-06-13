@@ -5,7 +5,7 @@ import SortBy from "../../components/SortBy";
 import { categories } from "../../data/data-categories";
 
 const filterOptions = categories.map((category) => ({
-  value: category.value,
+  value: category.label.toLowerCase(),
   label: category.label,
 }));
 
