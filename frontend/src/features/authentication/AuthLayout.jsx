@@ -1,18 +1,10 @@
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
-import {
-  Container,
-  Grid,
-  Link,
-  Paper,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Container, Grid, Link, Paper, Stack, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 import handImg from "../../assets/images/wave-hand.png";
 import Logo from "../../components/Logo";
+import useBreakpoint from "../../hooks/useBreakpoint";
 
 export default function AuthLayout({
   heroImg,
@@ -22,8 +14,7 @@ export default function AuthLayout({
   type = "",
   children,
 }) {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = useBreakpoint("sm");
 
   return (
     <Grid

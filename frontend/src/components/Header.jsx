@@ -1,6 +1,6 @@
-import { Container, Stack, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Container, Stack } from "@mui/material";
 
+import useBreakpoint from "../hooks/useBreakpoint";
 import Logo from "./Logo";
 import MainNav from "./MainNav";
 import MobileNav from "./MobileNav";
@@ -12,8 +12,7 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = useBreakpoint("sm");
 
   return (
     <Container maxWidth="lg" component="header">
