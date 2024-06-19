@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Divider, Stack } from "@mui/material";
 
 import Filter from "../../components/Filter";
 import SortBy from "../../components/SortBy";
@@ -16,22 +16,17 @@ const sortByOptions = [
 
 export default function ProductOperations() {
   return (
-    <Box>
+    <Stack
+      divider={<Divider orientation="horizontal" flexItem />}
+      spacing={2.5}
+    >
       <Filter
         label="Product Categories"
         filterField="category"
         filterOptions={filterOptions}
       />
 
-      <Box
-        component="hr"
-        border="none"
-        bgcolor="brand.gray_200"
-        height="1px"
-        my={2.5}
-      />
-
       <SortBy sortByOptions={sortByOptions} />
-    </Box>
+    </Stack>
   );
 }

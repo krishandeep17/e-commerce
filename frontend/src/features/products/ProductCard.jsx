@@ -4,6 +4,7 @@ import {
   Button,
   Fade,
   Grid,
+  IconButton,
   Paper,
   Stack,
   Tooltip,
@@ -11,8 +12,8 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import { formatCurrency } from "../../utils/helpers.js";
-import ProductImage from "../../components/ProductImage.jsx";
+import ProductImage from "../../components/ProductImage";
+import { formatCurrency } from "../../utils/helpers";
 
 export default function ProductCard({ product }) {
   return (
@@ -85,17 +86,22 @@ export default function ProductCard({ product }) {
               More details
             </Button>
             <Tooltip TransitionComponent={Fade} title="Add to cart">
-              <Button
-                variant="contained"
-                aria-label="cart"
+              <IconButton
+                aria-label="shopping cart"
                 sx={{
-                  fontSize: 26,
-                  flexShrink: 1,
+                  borderRadius: "10px",
+                  bgcolor: "primary.main",
+                  color: "rgb(255,255,255)",
+                  padding: "9px 23px",
+                  "&:hover": {
+                    bgcolor: "primary.main",
+                  },
                   "@media (max-width: 300px)": { flexGrow: 1 },
                 }}
+                size="large"
               >
                 <ShoppingCartOutlined fontSize="inherit" />
-              </Button>
+              </IconButton>
             </Tooltip>
           </Stack>
         </Stack>

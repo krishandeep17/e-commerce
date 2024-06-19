@@ -119,14 +119,14 @@ export default function ProductDetail() {
 
               <Stack spacing={2}>
                 <Button variant="contained" disabled={!hasStock}>
-                  Buy Now
+                  Buy now
                 </Button>
                 <Button
                   variant="outlined"
                   disabled={!hasStock}
                   startIcon={<ShoppingCartOutlined />}
                 >
-                  Add To Cart
+                  Add to cart
                 </Button>
               </Stack>
             </Box>

@@ -127,7 +127,7 @@ export default function OngoingDeals() {
                 sx={{ width: "fit-content" }}
                 endIcon={<EastRounded />}
               >
-                View Products
+                View products
               </Button>
             </Stack>
           </Grid>
