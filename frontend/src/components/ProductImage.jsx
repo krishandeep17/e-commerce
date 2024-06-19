@@ -1,13 +1,13 @@
 import { Stack } from "@mui/material";
 
-export default function ProductImage({ src, size, alt }) {
+export default function ProductImage({ src, size, alt, p = 3 }) {
   return (
     <Stack
       component="picture"
       alignItems="center"
       justifyContent="center"
       bgcolor="brand.gray_100"
-      p={3}
+      p={p}
     >
       <img
         src={src}

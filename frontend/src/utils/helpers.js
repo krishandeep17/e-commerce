@@ -5,7 +5,8 @@ export const formatCurrency = (value) =>
     value
   );
 
-export function formatRelativeDate(dateString) {
-  const date = parseISO(dateString);
-  return formatDistanceToNow(date, { addSuffix: true }).replace("about ", "");
-}
+export const formatRelativeDate = (dateString) =>
+  formatDistanceToNow(parseISO(dateString), { addSuffix: true }).replace(
+    "about ",
+    ""
+  );
