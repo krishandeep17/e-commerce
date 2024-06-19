@@ -16,7 +16,7 @@ export default function RelatedProducts({
   return (
     relatedProducts.length > 0 && (
       <Container maxWidth="lg" component="section" sx={{ mt: 8 }}>
-        <Typography component="h2" variant="h3" mb={4}>
+        <Typography component="h2" variant="h3" mb={5}>
           Related Products
         </Typography>
 

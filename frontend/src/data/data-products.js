@@ -21,12 +21,74 @@ export const products = [
     image: img1,
     description:
       "Introducing the Apple Watch Series 9 Solo Loop in Midnight Aluminum. Elevate your fitness and style with seamless design, advanced health features, and the convenience of the Solo Loop band.",
-    category: "watch",
+    category: "Watches",
     price: 499,
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
-    createdAt: "2024-12-07T17:59:39+05:30",
+    rating: 3.6,
+    numReviews: 10,
+    createdAt: "2024-06-01T17:59:39+05:30",
+    reviews: [
+      {
+        user: "John Doe",
+        rating: 5,
+        comment: "Excellent product, highly recommend!",
+        createdAt: "2024-06-09T12:00:00Z",
+      },
+      {
+        user: "Jane Smith",
+        rating: 4,
+        comment: "Very good quality but a bit pricey.",
+        createdAt: "2024-06-10T15:30:00Z",
+      },
+      {
+        user: "Sam Wilson",
+        rating: 3,
+        comment: "Average experience, expected more features.",
+        createdAt: "2024-06-11T09:45:00Z",
+      },
+      {
+        user: "Anna Lee",
+        rating: 5,
+        comment: "Absolutely love it! Great value for money.",
+        createdAt: "2024-06-12T18:20:00Z",
+      },
+      {
+        user: "Mark Taylor",
+        rating: 2,
+        comment: "Not satisfied with the performance.",
+        createdAt: "2024-06-13T08:10:00Z",
+      },
+      {
+        user: "Lucy Brown",
+        rating: 4,
+        comment: "Good product but delivery was delayed.",
+        createdAt: "2024-06-13T21:05:00Z",
+      },
+      {
+        user: "Peter Johnson",
+        rating: 5,
+        comment: "Exceeded my expectations in every way!",
+        createdAt: "2024-06-14T11:30:00Z",
+      },
+      {
+        user: "Emily Davis",
+        rating: 3,
+        comment: "Decent, but there are better options available.",
+        createdAt: "2024-06-14T14:00:00Z",
+      },
+      {
+        user: "Michael Scott",
+        rating: 1,
+        comment: "Very disappointed, would not buy again.",
+        createdAt: "2024-06-14T16:25:00Z",
+      },
+      {
+        user: "Rachel Green",
+        rating: 4,
+        comment: "Good quality but slightly overpriced.",
+        createdAt: "2024-06-14T19:10:00Z",
+      },
+    ],
   },
   {
     _id: "2",
@@ -34,7 +96,7 @@ export const products = [
     image: img2,
     description:
       "Experience stunning visuals and immersive audio with the Apple TV 4K. Stream your favorite shows and movies with ultra-fast Wi-Fi connectivity.",
-    category: "tv-and-home",
+    category: "TV",
     price: 179,
     countInStock: 15,
     rating: 4.8,
@@ -47,7 +109,7 @@ export const products = [
     image: img3,
     description:
       "Power and portability come together in the 11-inch iPad Pro. With 512 GB of storage, this Space Gray device is perfect for creative professionals and multitaskers.",
-    category: "ipad",
+    category: "iPads",
     price: 1199,
     countInStock: 8,
     rating: 4.6,
@@ -60,7 +122,7 @@ export const products = [
     image: img4,
     description:
       "The Apple Pencil (1st Generation) is the perfect tool for drawing, sketching, and note-taking on your iPad. Precision and versatility in one sleek package.",
-    category: "accessory",
+    category: "Accessories",
     price: 99,
     countInStock: 20,
     rating: 4.4,
@@ -73,7 +135,7 @@ export const products = [
     image: img5,
     description:
       "Dive into luxury with the Apple iPhone 15 Pro in Blue Titanium. Unleash powerful performance, stunning visuals, and abundant storage with 1 TB, redefining excellence in smartphone technology.",
-    category: "phone",
+    category: "Phones",
     price: 1499,
     countInStock: 5,
     rating: 4.7,
@@ -86,7 +148,7 @@ export const products = [
     image: img6,
     description:
       "Discover the pinnacle of smartphone innovation with the Apple iPhone 15 Pro Max. The Natural Titanium finish and 256 GB of storage deliver unmatched style and performance.",
-    category: "phone",
+    category: "Phones",
     price: 1299,
     countInStock: 7,
     rating: 4.9,
@@ -99,7 +161,7 @@ export const products = [
     image: img7,
     description:
       "The 13-inch MacBook Air in Space Gray combines performance and portability. With 256 GB of storage, it's perfect for students and professionals on the go.",
-    category: "laptop",
+    category: "Laptops",
     price: 999,
     countInStock: 12,
     rating: 4.3,
@@ -112,7 +174,7 @@ export const products = [
     image: img8,
     description:
       "Power through your work with the 14-inch MacBook Pro. Featuring a 12-core processor and 1 TB of storage in a sleek Space Black design.",
-    category: "laptop",
+    category: "Laptops",
     price: 2499,
     countInStock: 4,
     rating: 4.8,
@@ -125,7 +187,7 @@ export const products = [
     image: img9,
     description:
       "Immerse yourself in rich, high-fidelity sound with the AirPods Pro (2nd Generation). Enjoy active noise cancellation and a customizable fit for all-day comfort.",
-    category: "accessory",
+    category: "Accessories",
     price: 249,
     countInStock: 25,
     rating: 4.7,
@@ -137,9 +199,9 @@ export const products = [
     name: "15-inch MacBook Air (2 TB) - Midnight",
     image: img10,
     description:
-      "The 15-inch MacBook Air in Midnight is your ultimate portable powerhouse. With 2 TB of storage, it's perfect for creative professionals on the move.",
-    category: "laptop",
-    price: 1999,
+      "Experience peak performance with the 15-inch MacBook Air featuring the revolutionary Apple M2 chip, stunning 15.3-inch Liquid Retina display, and versatile MagSafe 3 charging. Elevate productivity with Touch ID and more.",
+    category: "Laptops",
+    price: 2099,
     countInStock: 6,
     rating: 4.5,
     numReviews: 12,
@@ -151,7 +213,7 @@ export const products = [
     image: img11,
     description:
       "Experience unparalleled sound quality with AirPods Max. These over-ear headphones combine high-fidelity audio with Active Noise Cancellation for an immersive listening experience.",
-    category: "accessory",
+    category: "Accessories",
     price: 549,
     countInStock: 10,
     rating: 4.6,
@@ -164,7 +226,7 @@ export const products = [
     image: img12,
     description:
       "Meet the versatile Apple iPad Air in stunning Purple. With 256 GB of storage and a powerful A14 Bionic chip, it's perfect for work, play, and everything in between.",
-    category: "ipad",
+    category: "iPads",
     price: 749,
     countInStock: 10,
     rating: 4.4,
@@ -177,7 +239,7 @@ export const products = [
     image: img13,
     description:
       "Explore the Apple iPhone 14 in Blue. Featuring 128 GB of storage and a stunning display, this phone combines style and functionality seamlessly.",
-    category: "phone",
+    category: "Phones",
     price: 799,
     countInStock: 9,
     rating: 4.5,
@@ -190,7 +252,7 @@ export const products = [
     image: img14,
     description:
       "Take your adventures to new heights with the Apple Watch Ultra 2. This rugged and durable smartwatch is built to withstand the elements while keeping you connected and healthy.",
-    category: "watch",
+    category: "Watches",
     price: 899,
     countInStock: 8,
     rating: 4.9,
@@ -203,7 +265,7 @@ export const products = [
     image: img15,
     description:
       "Elevate your laptop experience with the Silver Lamicall Adjustable Laptop Riser. Ergonomic and adjustable, it's perfect for enhancing your productivity and comfort.",
-    category: "accessory",
+    category: "Accessories",
     price: 39,
     countInStock: 15,
     rating: 4.6,

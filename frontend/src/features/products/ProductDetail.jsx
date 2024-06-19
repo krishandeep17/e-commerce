@@ -19,6 +19,7 @@ import BreadcrumbsNavigation from "../../components/BreadcrumbsNavigation";
 import ProductImage from "../../components/ProductImage";
 import { products } from "../../data/data-products";
 import { formatCurrency } from "../../utils/helpers";
+import ProductReviews from "./ProductReviews";
 import RelatedProducts from "./RelatedProducts";
 
 export default function ProductDetail() {
@@ -89,7 +90,7 @@ export default function ProductDetail() {
                   {formatCurrency(product.price)}
                 </Typography>
 
-                <Stack direction="row" alignItems="center" spacing={0.5}>
+                <Stack direction="row" alignItems="center" spacing={0.75}>
                   <Rating
                     value={product.rating}
                     precision={0.5}
@@ -100,9 +101,12 @@ export default function ProductDetail() {
                   />
 
                   <Typography component="span" variant="body2">
+                    {product.numReviews} review{product.numReviews > 1 && "s"}
+                  </Typography>
+                  {/* <Typography component="span" variant="body2">
                     &#x28;{product.rating} from {product.numReviews} review
                     {product.numReviews > 1 && "s"}&#x29;
-                  </Typography>
+                  </Typography> */}
                 </Stack>
               </Stack>
 
@@ -129,6 +133,10 @@ export default function ProductDetail() {
           </Grid>
         </Grid>
       </Container>
+
+      {product?.reviews?.length > 0 && (
+        <ProductReviews reviews={product?.reviews} />
+      )}
 
       <RelatedProducts
         currentProductId={product?._id}
