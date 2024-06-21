@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 
+import CartSummary from "./CartSummary";
 import CartTable from "./CartTable";
-import OrderSummary from "./OrderSummary";
 
 export default function CartDetail() {
   return (
@@ -11,7 +11,7 @@ export default function CartDetail() {
       </Grid>
 
       <Grid item xs={12} md={4}>
-        <OrderSummary />
+        <CartSummary />
       </Grid>
     </Grid>
   );

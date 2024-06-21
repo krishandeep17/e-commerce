@@ -11,7 +11,7 @@ import {
 
 import { formatCurrency } from "../../utils/helpers";
 
-export default function OrderSummary() {
+export default function CartSummary() {
   return (
     <TableContainer component={Paper} variant="outlined">
       <Table
@@ -19,11 +19,11 @@ export default function OrderSummary() {
           minWidth: 235,
           "& td, & th": { fontSize: "1rem" },
         }}
-        aria-label="order summary"
+        aria-label="cart summary"
       >
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2}>Order Summary</TableCell>
+            <TableCell colSpan={2}>Summary</TableCell>
           </TableRow>
         </TableHead>
 
@@ -76,7 +76,7 @@ export default function OrderSummary() {
           <TableRow>
             <TableCell colSpan={2} sx={{ border: "none" }}>
               <Button variant="contained" fullWidth>
-                Continue to checkout
+                Proceed to checkout
               </Button>
             </TableCell>
           </TableRow>

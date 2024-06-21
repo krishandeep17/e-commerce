@@ -70,7 +70,7 @@ export default function CartTable() {
             <Link
               component={RouterLink}
               to={`/products/${product._id}`}
-              height="100%"
+              height="fit-content"
             >
               <ProductImage
                 src={product.image}
@@ -87,23 +87,26 @@ export default function CartTable() {
               justifyContent="space-between"
               gap={{ xs: 2, sm: 3, md: 4 }}
             >
-              <Box>
-                <Typography
-                  fontWeight="bold"
-                  mb={0.8}
-                  overflow="hidden"
-                  display="-webkit-box"
-                  sx={{
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                  }}
+              <Box overflow="hidden">
+                <Link
+                  component={RouterLink}
+                  to={`/products/${product._id}`}
+                  underline="none"
                 >
-                  {product.name}
-                </Typography>
+                  <Typography
+                    fontWeight="bold"
+                    whiteSpace="nowrap"
+                    overflow="hidden"
+                    textOverflow="ellipsis"
+                    mb={0.8}
+                  >
+                    {product.name}
+                  </Typography>
 
-                <Typography variant="body2" color="text.secondary">
-                  {formatCurrency(product.price)}
-                </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {formatCurrency(product.price)}
+                  </Typography>
+                </Link>
               </Box>
 
               <Stack
