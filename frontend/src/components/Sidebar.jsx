@@ -1,5 +1,5 @@
 import { Button, Divider, Paper, Stack } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import UserProfile from "../features/authentication/UserProfile";
 import LogoutIcon from "./LogoutIcon";
@@ -9,7 +9,7 @@ import UserIcon from "./UserIcon";
 
 const profileNavItems = [
   {
-    title: "Personal Information",
+    title: "Personal Info",
     type: "link",
     url: "/account",
     icon: <UserIcon />,
@@ -61,11 +61,17 @@ export default function Sidebar() {
           ) : (
             <Button
               key={item.title}
-              component={RouterLink}
+              component={NavLink}
               to={item.url}
+              end
               variant="text"
               startIcon={item.icon}
-              sx={{ justifyContent: "initial" }}
+              sx={{
+                justifyContent: "initial",
+                "&.active": {
+                  bgcolor: "rgba(19, 17, 24, 0.04)",
+                },
+              }}
             >
               {item.title}
             </Button>

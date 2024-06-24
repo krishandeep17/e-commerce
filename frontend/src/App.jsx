@@ -11,9 +11,9 @@ import Login from "./pages/Login";
 import Order from "./pages/Order";
 import Orders from "./pages/Orders";
 import PageNotFound from "./pages/PageNotFound";
+import PersonalInfo from "./pages/PersonalInfo";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
-import Profile from "./pages/Profile";
 import Purchases from "./pages/Purchases";
 import RecoverPassword from "./pages/RecoverPassword";
 import theme from "./theme";
@@ -32,7 +32,7 @@ export default function App() {
             <Route path="cart" element={<Cart />} />
 
             <Route path="account" element={<Account />}>
-              <Route index element={<Profile />} />
+              <Route index element={<PersonalInfo />} />
               <Route path="purchases" element={<Purchases />} />
               <Route path="orders" element={<Orders />} />
               <Route path="orders/:id" element={<Order />} />
