@@ -4,8 +4,8 @@ import { useMemo } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import ProductImage from "../../components/ProductImage";
-import { products } from "../data/data-products";
-import { formatCurrency } from "../utils/helpers";
+import { products } from "../../data/data-products";
+import { formatCurrency } from "../../utils/helpers";
 
 export default function OrderDetail() {
   const { id: orderId } = useParams();
