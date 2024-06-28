@@ -9,7 +9,7 @@ export default function AppLayout() {
   return (
     <>
       <Header />
-      <Box component="main">
+      <Box component="main" mt={{ xs: 8, sm: 10 }}>
         <Outlet />
         <Services />
       </Box>
