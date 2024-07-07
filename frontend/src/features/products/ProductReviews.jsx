@@ -1,10 +1,4 @@
 import {
-  ArrowDownwardRounded,
-  ArrowUpwardRounded,
-  StarOutlineRounded,
-  StarRounded,
-} from "@mui/icons-material";
-import {
   Avatar,
   Box,
   Button,
@@ -16,6 +10,12 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  StarIcon,
+  StarOutlineIcon,
+} from "../../components/icons";
 import { formatRelativeDate } from "../../utils/helpers";
 
 export default function ProductReviews({ reviews }) {
@@ -51,8 +51,8 @@ export default function ProductReviews({ reviews }) {
                   precision={0.5}
                   readOnly
                   size="small"
-                  icon={<StarRounded fontSize="inherit" />}
-                  emptyIcon={<StarOutlineRounded fontSize="inherit" />}
+                  icon={<StarIcon fontSize="inherit" />}
+                  emptyIcon={<StarOutlineIcon fontSize="inherit" />}
                 />
 
                 <Typography mt={1}>&ldquo;{review.comment}&rdquo;</Typography>
@@ -73,9 +73,7 @@ export default function ProductReviews({ reviews }) {
       {reviews.length > 4 && (
         <Button
           variant="outlined"
-          endIcon={
-            isCollapsed ? <ArrowDownwardRounded /> : <ArrowUpwardRounded />
-          }
+          endIcon={isCollapsed ? <ArrowDownIcon /> : <ArrowUpIcon />}
           onClick={() => setIsCollapsed((isCollapsed) => !isCollapsed)}
           sx={{ borderRadius: 7, textTransform: "uppercase" }}
         >

@@ -1,8 +1,15 @@
-import { ArrowBackIosNewRounded } from "@mui/icons-material";
-import { Container, Grid, Link, Paper, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 import handImg from "../../assets/images/wave-hand.png";
+import { ChevronLeftIcon } from "../../components/icons";
 import Logo from "../../components/Logo";
 import useBreakpoint from "../../hooks/useBreakpoint";
 
@@ -71,20 +78,22 @@ export default function AuthLayout({
           >
             {type === "recover-password" ? (
               <>
-                <Link
+                <Button
                   component={RouterLink}
                   to="/login"
-                  underline="none"
+                  variant="text"
+                  size="large"
+                  startIcon={<ChevronLeftIcon />}
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 0.5,
-                    mb: 3,
+                    mb: 2,
+                    p: 0,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
                   }}
                 >
-                  <ArrowBackIosNewRounded />
-                  <Typography fontSize="1.125rem">Back</Typography>
-                </Link>
+                  Back
+                </Button>
 
                 <Typography component="h3" variant="h4" mb={1}>
                   {heading}

@@ -1,20 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EditOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Fab, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import defaultAvatar from "../../assets/images/avatar.svg";
+import { EditIcon } from "../../components/icons";
+import { user } from "../../data/data-users";
 import { UpdateUserDataSchema } from "./authModel";
 
 export default function UpdateUserDataForm() {
-  const user = {
-    firstName: "Krishandeep",
-    lastName: "Singh",
-    email: "krishandeep17@gmail.com",
-    avatar: "",
-  };
-
   const [avatarFile, setAvatarFile] = useState(null);
   const {
     register,
@@ -85,7 +79,7 @@ export default function UpdateUserDataForm() {
           htmlFor="image-upload"
           sx={{ position: "absolute", bottom: 0, right: 0 }}
         >
-          <EditOutlined />
+          <EditIcon fontSize="small" />
         </Fab>
 
         <Controller

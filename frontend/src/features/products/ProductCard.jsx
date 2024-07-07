@@ -1,4 +1,3 @@
-import { ShoppingCartOutlined, StarRounded } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -12,6 +11,7 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
+import { AddShoppingCartIcon, StarIcon } from "../../components/icons";
 import ProductImage from "../../components/ProductImage";
 import { formatCurrency } from "../../utils/helpers";
 
@@ -66,7 +66,7 @@ export default function ProductCard({ product }) {
             </Typography>
 
             <Stack direction="row" alignItems="center" spacing={0.5}>
-              <StarRounded sx={{ color: "#faaf00" }} />
+              <StarIcon />
               <Box component="span">{product.rating}</Box>
             </Stack>
           </Stack>
@@ -98,9 +98,8 @@ export default function ProductCard({ product }) {
                   },
                   "@media (max-width: 300px)": { flexGrow: 1 },
                 }}
-                size="large"
               >
-                <ShoppingCartOutlined fontSize="inherit" />
+                <AddShoppingCartIcon />
               </IconButton>
             </Tooltip>
           </Stack>

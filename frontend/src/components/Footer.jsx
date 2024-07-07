@@ -1,4 +1,3 @@
-import { GitHub, Instagram, LinkedIn } from "@mui/icons-material";
 import {
   Box,
   Container,
@@ -7,27 +6,27 @@ import {
   Stack,
   Tooltip,
   Typography,
-  tooltipClasses,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
 import Logo from "./Logo";
+import { GithubIcon, InstagramIcon, LinkedInIcon } from "./icons";
 
 const socialLinks = [
   {
     title: "LinkedIn",
     url: "https://www.linkedin.com/in/krishandeep17/",
-    icon: <LinkedIn />,
+    icon: <LinkedInIcon />,
   },
   {
     title: "Instagram",
     url: "https://www.instagram.com/krishandeep17/",
-    icon: <Instagram />,
+    icon: <InstagramIcon />,
   },
   {
     title: "GitHub",
     url: "https://github.com/krishandeep17/",
-    icon: <GitHub />,
+    icon: <GithubIcon />,
   },
 ];
 
@@ -59,33 +58,23 @@ export default function Footer() {
 
           <Stack direction="row" alignItems="center" spacing={6}>
             {socialLinks.map((socialLink) => (
-              <Link
+              <Tooltip
                 key={socialLink.title}
-                color={grey["A100"]}
-                href={socialLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                lineHeight="0"
+                TransitionComponent={Fade}
+                title={socialLink.title}
+                placement="top"
+                arrow
               >
-                <Tooltip
-                  TransitionComponent={Fade}
-                  title={socialLink.title}
-                  placement="top"
-                  arrow
-                  slotProps={{
-                    popper: {
-                      sx: {
-                        [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
-                          {
-                            marginBottom: "10px",
-                          },
-                      },
-                    },
-                  }}
+                <Link
+                  color={grey["A100"]}
+                  href={socialLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  lineHeight="0"
                 >
                   {socialLink.icon}
-                </Tooltip>
-              </Link>
+                </Link>
+              </Tooltip>
             ))}
           </Stack>
         </Stack>

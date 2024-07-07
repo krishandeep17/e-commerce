@@ -1,4 +1,3 @@
-import { EastRounded } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -12,13 +11,13 @@ import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 import dealImg from "../assets/images/deal.png";
-
 import {
   MILLISECONDS_PER_DAY,
   MILLISECONDS_PER_HOUR,
   MILLISECONDS_PER_MINUTE,
   MILLISECONDS_PER_SECOND,
 } from "../utils/constants";
+import { ArrowRightIcon } from "./icons";
 
 const ONGOING_DEALS_LAST_DATE = new Date();
 ONGOING_DEALS_LAST_DATE.setDate(ONGOING_DEALS_LAST_DATE.getDate() + 7);
@@ -124,10 +123,10 @@ export default function OngoingDeals() {
                 component={RouterLink}
                 to="/products"
                 variant="contained"
-                sx={{ width: "fit-content" }}
-                endIcon={<EastRounded />}
+                endIcon={<ArrowRightIcon />}
+                sx={{ alignSelf: "flex-start" }}
               >
-                View products
+                View Products
               </Button>
             </Stack>
           </Grid>

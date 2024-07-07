@@ -1,6 +1,6 @@
 import { SvgIcon } from "@mui/material";
 
-export default function ShoppingCartIcon(props) {
+export default function ShoppingBagIcon(props) {
   return (
     <SvgIcon {...props}>
       <svg

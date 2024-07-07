@@ -1,11 +1,12 @@
-import { NavigateNextRounded } from "@mui/icons-material";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+
+import { ChevronRightIcon } from "./icons";
 
 export default function BreadcrumbsNavigation({ breadcrumbsLinks }) {
   return (
     <Breadcrumbs
-      separator={<NavigateNextRounded fontSize="small" />}
+      separator={<ChevronRightIcon fontSize="small" />}
       aria-label="breadcrumb"
       sx={{ mb: 4 }}
     >

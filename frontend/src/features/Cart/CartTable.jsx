@@ -1,4 +1,3 @@
-import { AddRounded, DeleteOutlined, RemoveRounded } from "@mui/icons-material";
 import {
   Box,
   Divider,
@@ -10,10 +9,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { red } from "@mui/material/colors";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
+import { MinusIcon, PlusIcon, TrashIcon } from "../../components/icons";
 import ProductImage from "../../components/ProductImage";
 import { products } from "../../data/data-products";
 import useBreakpoint from "../../hooks/useBreakpoint";
@@ -118,7 +117,8 @@ export default function CartTable() {
                 width="fit-content"
               >
                 <IconButton
-                  aria-label="remove"
+                  aria-label="decrease quantity"
+                  color="inherit"
                   sx={{
                     borderRadius: "10px 0 0 10px",
                     borderRight: "1px solid",
@@ -128,7 +128,7 @@ export default function CartTable() {
                   onClick={decreaseQuantity}
                   size={isSmallScreen ? "small" : "medium"}
                 >
-                  <RemoveRounded fontSize="inherit" />
+                  <MinusIcon fontSize="inherit" />
                 </IconButton>
 
                 <Typography
@@ -141,7 +141,8 @@ export default function CartTable() {
                 </Typography>
 
                 <IconButton
-                  aria-label="add"
+                  aria-label="increase quantity"
+                  color="inherit"
                   sx={{
                     borderRadius: "0 10px 10px 0",
                     borderLeft: "1px solid",
@@ -151,7 +152,7 @@ export default function CartTable() {
                   onClick={increaseQuantity}
                   size={isSmallScreen ? "small" : "medium"}
                 >
-                  <AddRounded fontSize="inherit" />
+                  <PlusIcon fontSize="inherit" />
                 </IconButton>
               </Stack>
             </Box>
@@ -170,9 +171,9 @@ export default function CartTable() {
                 {formatCurrency(product.price * quantity)}
               </Typography>
 
-              <Tooltip TransitionComponent={Fade} title="Remove">
-                <IconButton aria-label="delete" sx={{ color: red[300] }}>
-                  <DeleteOutlined />
+              <Tooltip title="Remove" TransitionComponent={Fade}>
+                <IconButton aria-label="remove from cart" color="error">
+                  <TrashIcon />
                 </IconButton>
               </Tooltip>
             </Stack>

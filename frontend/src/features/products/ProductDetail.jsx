@@ -1,9 +1,4 @@
 import {
-  ShoppingCartOutlined,
-  StarOutlineRounded,
-  StarRounded,
-} from "@mui/icons-material";
-import {
   Box,
   Button,
   Container,
@@ -16,6 +11,11 @@ import {
 import { useParams } from "react-router-dom";
 
 import BreadcrumbsNavigation from "../../components/BreadcrumbsNavigation";
+import {
+  AddShoppingCartIcon,
+  StarIcon,
+  StarOutlineIcon,
+} from "../../components/icons";
 import ProductImage from "../../components/ProductImage";
 import { products } from "../../data/data-products";
 import { formatCurrency } from "../../utils/helpers";
@@ -96,8 +96,8 @@ export default function ProductDetail() {
                     precision={0.5}
                     readOnly
                     size="small"
-                    icon={<StarRounded fontSize="inherit" />}
-                    emptyIcon={<StarOutlineRounded fontSize="inherit" />}
+                    icon={<StarIcon fontSize="inherit" />}
+                    emptyIcon={<StarOutlineIcon fontSize="inherit" />}
                   />
 
                   <Typography component="span" variant="body2">
@@ -124,7 +124,7 @@ export default function ProductDetail() {
                 <Button
                   variant="outlined"
                   disabled={!hasStock}
-                  startIcon={<ShoppingCartOutlined />}
+                  startIcon={<AddShoppingCartIcon />}
                 >
                   Add to cart
                 </Button>
