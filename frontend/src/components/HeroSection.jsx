@@ -26,7 +26,7 @@ export default function HeroSection() {
           Explore a World of Cutting-Edge Tech
         </Typography>
         <Button component={RouterLink} to="/products" variant="contained">
-          Shop now
+          Shop Now
         </Button>
       </Container>
     </Box>

@@ -9,11 +9,27 @@ let theme = createTheme({
       },
       styleOverrides: {
         root: {
-          borderRadius: "10px",
-          padding: "10px 24px",
           textTransform: "none",
-          fontSize: "1rem",
-          fontWeight: "normal",
+          borderRadius: "8px",
+        },
+        text: {
+          padding: "8px 12px",
+        },
+        contained: {
+          padding: "10px 20px",
+        },
+        outlined: {
+          padding: "6px 12px",
+        },
+        startIcon: {
+          "&>*:nth-of-type(1)": {
+            fontSize: "1.5rem",
+          },
+        },
+        endIcon: {
+          "&>*:nth-of-type(1)": {
+            fontSize: "1.5rem",
+          },
         },
       },
     },
