@@ -1,3 +1,4 @@
+import { grey } from "@mui/material/colors";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // Create a theme instance.
@@ -45,17 +46,17 @@ let theme = createTheme({
     mode: "light",
 
     primary: {
-      main: "#131118",
+      main: "rgb(19, 17, 24)",
+    },
+
+    secondary: {
+      main: grey[100],
     },
 
     brand: {
-      gray_50: "rgb(255, 255, 255)",
-      gray_100: "rgb(243, 243, 243)",
+      gray_100: grey[100],
       gray_200: "rgb(237, 236, 238)",
       gray_500: "rgb(164, 161, 170)",
-
-      green: "rgb(60, 209, 57)",
-      red: "rgb(255, 111, 118)",
     },
   },
 

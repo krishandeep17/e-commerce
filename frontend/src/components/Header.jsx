@@ -46,7 +46,7 @@ export default function Header() {
       <AppBar
         component="header"
         sx={{
-          backgroundColor: "brand.gray_50",
+          backgroundColor: "white",
           color: "text.primary",
           py: 1,
         }}
