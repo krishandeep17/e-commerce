@@ -93,12 +93,12 @@ export default function CartDropdownMenu() {
           aria-controls="cart-summary"
           aria-haspopup="true"
           startIcon={
-            // <Badge
-            //   badgeContent={numCartItems > 0 ? numCartItems : 0}
-            //   color="error"
-            // >
-            // </Badge>
-            <ShoppingBagIcon />
+            <Badge
+              badgeContent={numCartItems > 0 ? numCartItems : 0}
+              color="error"
+            >
+              <ShoppingBagIcon />
+            </Badge>
           }
           endIcon={<ChevronDownIcon />}
           onClick={handleOpenCartSummary}

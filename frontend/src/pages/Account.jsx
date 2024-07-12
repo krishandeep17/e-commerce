@@ -1,7 +1,7 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
-import Sidebar from "../components/Sidebar";
+import UserSidebarMenu from "../features/authentication/UserSidebarMenu";
 
 export default function Account() {
   return (
@@ -12,7 +12,7 @@ export default function Account() {
 
       <Grid container spacing={{ xs: 4, md: 6 }}>
         <Grid item xs={12} md={3.5}>
-          <Sidebar />
+          <UserSidebarMenu />
         </Grid>
 
         <Grid item xs={12} md={8.5}>
