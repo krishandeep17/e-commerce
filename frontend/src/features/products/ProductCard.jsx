@@ -25,18 +25,8 @@ export default function ProductCard({ product }) {
           alt={`${product.name} Image`}
         />
 
-        <Stack spacing={1.25} p={3} pt={2.5}>
-          <Typography
-            component="h4"
-            variant="h6"
-            fontWeight="bold"
-            overflow="hidden"
-            display="-webkit-box"
-            sx={{
-              WebkitLineClamp: "1",
-              WebkitBoxOrient: "vertical",
-            }}
-          >
+        <Stack spacing={1.25} p={3} pt={2.5} overflow="hidden">
+          <Typography component="h4" variant="h6" fontWeight="bold" noWrap>
             {product.name}
           </Typography>
           <Typography

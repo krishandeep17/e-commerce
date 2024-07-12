@@ -12,7 +12,7 @@ export default function ProductGallery() {
   const filteredProducts = products.filter(
     (product) =>
       selectedCategories.length === 0 ||
-      selectedCategories.includes(product.category.toLowerCase())
+      selectedCategories.includes(product.category)
   );
 
   // 2) SORT

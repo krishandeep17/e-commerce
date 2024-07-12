@@ -22,32 +22,38 @@ export const MAX_QUANTITY = 5;
 
 export const categories = [
   {
+    slug: "laptops",
     label: "Laptops",
     image: LaptopImg,
     icon: LaptopIcon,
   },
   {
+    slug: "tablets",
     label: "Tablets",
     image: TabletImg,
     icon: TabletIcon,
   },
   {
+    slug: "watches",
     label: "Watches",
     image: WatchesImg,
     icon: WatchIcon,
   },
   {
+    slug: "phones",
     label: "Phones",
     image: SmartphoneImg,
     icon: SmartphoneIcon,
   },
   {
+    slug: "accessories",
     label: "Accessories",
     image: AccessoriesImg,
     icon: HeadphoneIcon,
   },
   {
-    label: "Home TV",
+    slug: "tv-home",
+    label: "TV & Home",
     image: TelevisionImg,
     icon: TelevisionIcon,
   },

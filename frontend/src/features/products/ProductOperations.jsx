@@ -2,10 +2,10 @@ import { Divider, Stack } from "@mui/material";
 
 import Filter from "../../components/Filter";
 import SortBy from "../../components/SortBy";
-import { categories } from "../../data/data-categories";
+import { categories } from "../../utils/constants";
 
 const filterOptions = categories.map((category) => ({
-  value: category.label.toLowerCase(),
+  value: category.slug,
   label: category.label,
 }));
 

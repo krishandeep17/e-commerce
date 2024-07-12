@@ -35,7 +35,7 @@ export default function ProductDetail() {
     {
       label: product?.category,
       type: "link",
-      url: `/products?category=${product?.category?.toLowerCase()}`,
+      url: `/products?category=${product?.category}`,
     },
     { label: product?.name, type: "text" },
   ];
@@ -66,17 +66,13 @@ export default function ProductDetail() {
                 spacing={2}
                 mb={1.8}
               >
-                <Typography variant="body2">{product.category}</Typography>
+                <Typography variant="body2" textTransform="capitalize">
+                  {product.category}
+                </Typography>
 
-                {hasStock ? (
-                  <Typography variant="body2" color="brand.green">
-                    In stock
-                  </Typography>
-                ) : (
-                  <Typography variant="body2" color="brand.red">
-                    Out of stock
-                  </Typography>
-                )}
+                <Typography variant="body2">
+                  {hasStock ? "In stock" : "Out of stock"}
+                </Typography>
               </Stack>
 
               <Stack
@@ -103,10 +99,6 @@ export default function ProductDetail() {
                   <Typography component="span" variant="body2">
                     {product.numReviews} review{product.numReviews > 1 && "s"}
                   </Typography>
-                  {/* <Typography component="span" variant="body2">
-                    &#x28;{product.rating} from {product.numReviews} review
-                    {product.numReviews > 1 && "s"}&#x29;
-                  </Typography> */}
                 </Stack>
               </Stack>
 

@@ -18,6 +18,7 @@ export default function BreadcrumbsNavigation({ breadcrumbsLinks }) {
             to={link.url}
             underline="hover"
             color="inherit"
+            textTransform="capitalize"
           >
             {link.label}
           </Link>
