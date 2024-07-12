@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import UserDropdownMenu from "../features/authentication/UserDropdownMenu";
 import CartDropdownMenu from "../features/Cart/CartDropdownMenu";
-import ProductSearchForm from "../features/products/ProductSearchForm";
+import ProductSearchDialog from "../features/products/ProductSearchDialog";
 import useBreakpoint from "../hooks/useBreakpoint";
 import ElevationScroll from "./ElevationScroll";
 import { LoginIcon } from "./icons";
@@ -56,7 +56,7 @@ export default function Header() {
             <Logo width="180" height="30" />
 
             <Stack direction="row" alignItems="center">
-              <ProductSearchForm />
+              <ProductSearchDialog />
 
               <CartDropdownMenu />
 
