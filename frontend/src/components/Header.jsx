@@ -9,7 +9,7 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 
 import UserDropdownMenu from "../features/authentication/UserDropdownMenu";
-import CartDropdownMenu from "../features/Cart/CartDropdownMenu";
+import CartDropdownMenu from "../features/cart/CartDropdownMenu";
 import ProductSearchDialog from "../features/products/ProductSearchDialog";
 import useBreakpoint from "../hooks/useBreakpoint";
 import ElevationScroll from "./ElevationScroll";

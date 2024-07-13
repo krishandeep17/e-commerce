@@ -1,7 +1,7 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import CartDetail from "../features/Cart/CartDetail";
+import CartDetail from "../features/cart/CartDetail";
 
 export default function Cart() {
   return (
