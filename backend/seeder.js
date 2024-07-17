@@ -5,18 +5,17 @@ import Order from "./models/orderModel.js";
 import Product from "./models/productModel.js";
 import User from "./models/userModel.js";
 
-// Connect to database
-connectDB();
+connectDB(); // Connect to MongoDB
 
-// Insert sample data
-const importData = async () => {
+// Import data into the database
+async function importData() {
   try {
+    // Clear existing data
     await User.deleteMany();
     await Product.deleteMany();
     await Order.deleteMany();
 
-    console.log("Existing data cleared");
-
+    // Insert sample data
     const createdUsers = await User.create(users);
 
     const adminUser = createdUsers[0]._id;
@@ -28,31 +27,32 @@ const importData = async () => {
 
     await Product.create(sampleProducts);
 
-    console.log("Sample data inserted");
+    console.log("Data imported successfully!");
     process.exit();
   } catch (error) {
-    console.log(error);
+    console.log(`Error importing data: ${error}`);
     process.exit(1);
   }
-};
+}
 
-// Clear existing data
-const deleteData = async () => {
+// Delete all data from the database
+async function deleteAllData() {
   try {
+    // Clear all data
     await User.deleteMany();
     await Product.deleteMany();
     await Order.deleteMany();
 
-    console.log("Existing data cleared");
+    console.log("All data deleted successfully!");
     process.exit();
   } catch (error) {
-    console.log(error);
+    console.log(`Error deleting data: ${error}`);
     process.exit(1);
   }
-};
+}
 
 if (process.argv[2] === "--import") {
   importData();
 } else if (process.argv[2] === "--delete") {
-  deleteData();
+  deleteAllData();
 }
