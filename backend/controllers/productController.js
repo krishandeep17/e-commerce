@@ -14,9 +14,13 @@ export const getAllProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id
 // @access  Public
 export const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const id = req.params.id;
+  const product = await Product.findById(id);
 
-  if (!product) return res.status(404).json({ message: "Product not found" });
+  if (product) {
+    res.status(404);
+    return new Error(`No product found with the ID: ${id}`);
+  }
 
   res.status(200).json(product);
 });
