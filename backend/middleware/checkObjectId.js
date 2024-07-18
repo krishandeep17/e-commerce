@@ -1,10 +1,10 @@
 import { isValidObjectId } from "mongoose";
 
+import AppError from "../utils/appError.js";
+
 export default function checkObjectId(req, res, next) {
-  if (!isValidObjectId(req.params.id)) {
-    res.status(404);
-    throw new Error(`Invalid ObjectId of: ${req.params.id}`);
-  }
+  if (!isValidObjectId(req.params.id))
+    return next(new AppError(`Invalid ObjectId: ${req.params.id}`));
 
   next();
 }

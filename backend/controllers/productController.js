@@ -1,5 +1,6 @@
-import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModel.js";
+import AppError from "../utils/appError.js";
+import asyncHandler from "../utils/asyncHandler.js";
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -13,14 +14,10 @@ export const getAllProducts = asyncHandler(async (req, res) => {
 // @desc    Fetch single product
 // @route   GET /api/products/:id
 // @access  Public
-export const getProductById = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-  const product = await Product.findById(id);
+export const getProductById = asyncHandler(async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
 
-  if (product) {
-    res.status(404);
-    return new Error(`No product found with the ID: ${id}`);
-  }
+  if (!product) throw new AppError("Product not found", 404);
 
   res.status(200).json(product);
 });

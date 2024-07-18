@@ -1,22 +1,25 @@
 import express from "express";
 
 import connectDB from "./config/db.js";
-import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+import errorHandler from "./middleware/errorHandler.js";
+import notFound from "./middleware/notFound.js";
 import productRoutes from "./routes/productRoutes.js";
 
-const port = process.env.PORT || 3000;
-
-connectDB(); // Connect to MongoDB
-
 const app = express();
+
+// Connect to MongoDB
+connectDB();
 
 // Routes
 app.use("/api/products", productRoutes);
 
-// Error handling
-app.all("*", notFound); // Unhandled routes
+// Not Found Middleware
+app.use(notFound);
+
+// Error Handler Middleware
 app.use(errorHandler);
 
-app.listen(port, () =>
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
