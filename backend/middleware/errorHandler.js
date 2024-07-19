@@ -1,21 +1,27 @@
 export default function errorHandler(err, req, res, next) {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
-  const status = `${statusCode}`.startsWith("4") ? "fail" : "error";
+  let statusCode = err.statusCode || 500;
+  let message = err.message || "Internal Server Error";
+  let isOperational = err.isOperational || false;
 
-  if (process.env.NODE_ENV === "development") {
-    return res.status(statusCode).json({
-      status,
-      name: err.name,
-      message,
-      stack: err.stack,
-    });
+  // Handle Invalid Database IDs
+  if (err.name === "CastError") {
+    statusCode = 400;
+    message = `Invalid ${err.path}: ${err.value}`;
+    isOperational = true;
   }
 
-  if (process.env.NODE_ENV === "production" && err.isOperational) {
-    res.status(statusCode).json({ status, message });
+  if (process.env.NODE_ENV === "development") {
+    res.status(statusCode).json({
+      name: err.name,
+      message,
+      error: err,
+      stack: err.stack,
+    });
   } else {
-    console.error(`ERROR: ${err}`);
-    res.status(500).json({ status: "error", message: "Something went wrong" });
+    !isOperational && console.error(`ERROR: ${err}`);
+
+    res.status(statusCode).json({
+      message: isOperational ? message : "Something went wrong!",
+    });
   }
 }
