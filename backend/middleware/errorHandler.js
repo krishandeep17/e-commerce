@@ -10,6 +10,15 @@ export default function errorHandler(err, req, res, next) {
     isOperational = true;
   }
 
+  // Handle Duplicate Database Fields
+  if (err.code === 11000) {
+    const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+
+    statusCode = 400;
+    message = `Duplicate field value: ${value}. Please use another value!`;
+    isOperational = true;
+  }
+
   if (process.env.NODE_ENV === "development") {
     res.status(statusCode).json({
       name: err.name,
