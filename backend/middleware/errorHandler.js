@@ -19,6 +19,17 @@ export default function errorHandler(err, req, res, next) {
     isOperational = true;
   }
 
+  // Handle Mongoose Validation Errors
+  if (err.name === "ValidationError") {
+    const errorMessages = Object.values(err.errors).map(
+      (error) => error.message
+    );
+
+    statusCode = 400;
+    message = `Invalid input data. ${errorMessages.join(". ")}`;
+    isOperational = true;
+  }
+
   if (process.env.NODE_ENV === "development") {
     res.status(statusCode).json({
       name: err.name,
