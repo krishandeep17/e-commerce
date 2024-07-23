@@ -18,6 +18,12 @@ export const MILLISECONDS_PER_HOUR = 1000 * 60 * 60;
 export const MILLISECONDS_PER_MINUTE = 1000 * 60;
 export const MILLISECONDS_PER_SECOND = 1000;
 
+export const BASE_URL = ""; // If using proxy
+export const PRODUCTS_URL = "/api/products";
+export const USERS_URL = "/api/users";
+export const ORDERS_URL = "/api/orders";
+export const PAYPAL_URL = "/api/config/paypal";
+
 export const MAX_QUANTITY = 5;
 
 export const categories = [
