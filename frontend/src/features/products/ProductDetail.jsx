@@ -17,7 +17,7 @@ import {
   StarOutlineIcon,
 } from "../../components/icons";
 import ProductImage from "../../components/ProductImage";
-import { products } from "../../data/data-products";
+import { useGetProductDetailsQuery } from "../../services/productsApiSlice";
 import { formatCurrency } from "../../utils/helpers";
 import ProductReviews from "./ProductReviews";
 import RelatedProducts from "./RelatedProducts";
@@ -25,9 +25,17 @@ import RelatedProducts from "./RelatedProducts";
 export default function ProductDetail() {
   const { id: productId } = useParams();
 
-  const product = products.find((product) => product._id === productId);
+  const {
+    data: product,
+    error,
+    isLoading,
+  } = useGetProductDetailsQuery(productId);
 
-  const hasStock = product?.countInStock > 0;
+  if (isLoading) return <div>Loading...</div>;
+
+  if (error) return <div>Error: {error.message}</div>;
+
+  const hasStock = product?.stock > 0;
 
   const breadcrumbsLinks = [
     { label: "Home", type: "link", url: "/" },
@@ -48,16 +56,16 @@ export default function ProductDetail() {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <ProductImage
-              src={product.image}
+              src={product?.images[0]}
               size="350"
-              alt={`${product.name} Image`}
+              alt={product?.name}
             />
           </Grid>
 
           <Grid item xs={12} md={6}>
             <Box mt={1.25}>
               <Typography component="h2" variant="h5" mb={1}>
-                {product.name}
+                {product?.name}
               </Typography>
 
               <Stack
@@ -67,7 +75,7 @@ export default function ProductDetail() {
                 mb={1.8}
               >
                 <Typography variant="body2" textTransform="capitalize">
-                  {product.category}
+                  {product?.category}
                 </Typography>
 
                 <Typography variant="body2">
@@ -106,7 +114,7 @@ export default function ProductDetail() {
                 <Typography component="h6" fontWeight="600">
                   Description
                 </Typography>
-                <Typography>{product.description}</Typography>
+                <Typography>{product?.description}</Typography>
               </Stack>
 
               <Stack spacing={2}>
@@ -126,9 +134,7 @@ export default function ProductDetail() {
         </Grid>
       </Container>
 
-      {product?.reviews?.length > 0 && (
-        <ProductReviews reviews={product?.reviews} />
-      )}
+      <ProductReviews reviews={product?.reviews} />
 
       <RelatedProducts
         currentProductId={product?._id}

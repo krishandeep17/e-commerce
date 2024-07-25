@@ -19,15 +19,11 @@ export default function ProductCard({ product }) {
   return (
     <Grid item xs={12} sm={6} lg={4}>
       <Paper variant="outlined" sx={{ overflow: "hidden" }}>
-        <ProductImage
-          src={product.image}
-          size="231"
-          alt={`${product.name} Image`}
-        />
+        <ProductImage src={product?.images[0]} size="231" alt={product?.name} />
 
         <Stack spacing={1.25} p={3} pt={2.5} overflow="hidden">
           <Typography component="h4" variant="h6" fontWeight="bold" noWrap>
-            {product.name}
+            {product?.name}
           </Typography>
           <Typography
             overflow="hidden"
@@ -37,7 +33,7 @@ export default function ProductCard({ product }) {
               WebkitBoxOrient: "vertical",
             }}
           >
-            {product.description}
+            {product?.description}
           </Typography>
 
           <Stack
@@ -52,12 +48,12 @@ export default function ProductCard({ product }) {
               fontSize={{ sm: "1.125rem" }}
               fontWeight="600"
             >
-              {formatCurrency(product.price)}
+              {formatCurrency(product?.price)}
             </Typography>
 
             <Stack direction="row" alignItems="center" spacing={0.5}>
               <StarIcon />
-              <Box component="span">{product.rating}</Box>
+              <Box component="span">{product?.rating}</Box>
             </Stack>
           </Stack>
 
@@ -69,7 +65,7 @@ export default function ProductCard({ product }) {
           >
             <Button
               component={RouterLink}
-              to={`/products/${product._id}`}
+              to={`/products/${product?._id}`}
               variant="outlined"
               sx={{ minWidth: 133, flexGrow: 1 }}
             >

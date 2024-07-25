@@ -21,6 +21,8 @@ import { formatRelativeDate } from "../../utils/helpers";
 export default function ProductReviews({ reviews }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
+  if (!reviews.length > 0) return null;
+
   const displayReviews = isCollapsed ? reviews.slice(0, 4) : reviews;
 
   return (
