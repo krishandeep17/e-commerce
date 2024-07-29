@@ -9,12 +9,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action) => {
+      // payload = newItem
       state.cartItems.push(action.payload);
 
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
     removeItemFromCart: (state, action) => {
+      // payload = productId
       state.cartItems = state.cartItems.filter(
         (item) => item._id !== action.payload
       );
@@ -23,6 +25,7 @@ const cartSlice = createSlice({
     },
 
     increaseItemQuantity: (state, action) => {
+      // payload = productId
       const item = state.cartItems.find((item) => item._id === action.payload);
 
       item.quantity++;
@@ -32,6 +35,7 @@ const cartSlice = createSlice({
     },
 
     decreaseItemQuantity: (state, action) => {
+      // payload = productId
       const item = state.cartItems.find((item) => item._id === action.payload);
 
       item.quantity--;
@@ -47,12 +51,14 @@ const cartSlice = createSlice({
     },
 
     updateShippingAddress: (state, action) => {
+      // payload = shippingAddress
       state.shippingAddress = action.payload;
 
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
     updatePaymentMethod: (state, action) => {
+      // payload = paymentMethod
       state.paymentMethod = action.payload;
 
       localStorage.setItem("cart", JSON.stringify(state));
@@ -67,6 +73,11 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const getCartItems = (state) => state.cart.cartItems;
+
+export const getCartItemsTotalPrice = (state) =>
+  state.cart.cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
 
 export const {
   addItemToCart,

@@ -9,31 +9,24 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import { MinusIcon, PlusIcon, TrashIcon } from "../../components/icons";
 import ProductImage from "../../components/ProductImage";
-import { products } from "../../data/data-products";
 import useBreakpoint from "../../hooks/useBreakpoint";
-import { MAX_QUANTITY } from "../../utils/constants";
 import { formatCurrency } from "../../utils/helpers";
+import {
+  decreaseItemQuantity,
+  getCartItems,
+  increaseItemQuantity,
+  removeItemFromCart,
+} from "./cartSlice";
 
 export default function CartTable() {
-  const [quantity, setQuantity] = useState(1);
   const isSmallScreen = useBreakpoint("sm");
-
-  function decreaseQuantity() {
-    if (quantity === 1) return;
-
-    setQuantity((quantity) => quantity - 1);
-  }
-
-  function increaseQuantity() {
-    if (quantity === MAX_QUANTITY) return;
-
-    setQuantity((quantity) => quantity + 1);
-  }
+  const cartItems = useSelector(getCartItems);
+  const dispatch = useDispatch();
 
   return (
     <Paper variant="outlined" sx={{ py: 2 }}>
@@ -58,7 +51,7 @@ export default function CartTable() {
           </Box>
         )}
 
-        {products.map((product) => (
+        {cartItems.map((product) => (
           <Box
             key={product._id}
             display="grid"
@@ -74,7 +67,7 @@ export default function CartTable() {
               <ProductImage
                 src={product.image}
                 size="50"
-                alt={`${product.name} Image`}
+                alt={product.name}
                 p={0.75}
               />
             </Link>
@@ -124,9 +117,9 @@ export default function CartTable() {
                     borderRight: "1px solid",
                     borderColor: "brand.gray_500",
                   }}
-                  disabled={quantity === 1}
-                  onClick={decreaseQuantity}
                   size={isSmallScreen ? "small" : "medium"}
+                  disabled={product.quantity === 1}
+                  onClick={() => dispatch(decreaseItemQuantity(product._id))}
                 >
                   <MinusIcon fontSize="inherit" />
                 </IconButton>
@@ -137,7 +130,7 @@ export default function CartTable() {
                   minWidth={{ xs: "28px", sm: "40px" }}
                   textAlign="center"
                 >
-                  {quantity}
+                  {product.quantity}
                 </Typography>
 
                 <IconButton
@@ -148,9 +141,9 @@ export default function CartTable() {
                     borderLeft: "1px solid",
                     borderColor: "brand.gray_500",
                   }}
-                  disabled={quantity === MAX_QUANTITY}
-                  onClick={increaseQuantity}
                   size={isSmallScreen ? "small" : "medium"}
+                  disabled={product.quantity === product.stock}
+                  onClick={() => dispatch(increaseItemQuantity(product._id))}
                 >
                   <PlusIcon fontSize="inherit" />
                 </IconButton>
@@ -168,11 +161,15 @@ export default function CartTable() {
                 minWidth={{ xs: "fit-content", sm: "82px" }}
                 textAlign={{ xs: "right", sm: "left" }}
               >
-                {formatCurrency(product.price * quantity)}
+                {formatCurrency(product.totalPrice)}
               </Typography>
 
               <Tooltip title="Remove" TransitionComponent={Fade}>
-                <IconButton aria-label="remove from cart" color="error">
+                <IconButton
+                  aria-label="remove from cart"
+                  color="error"
+                  onClick={() => dispatch(removeItemFromCart(product._id))}
+                >
                   <TrashIcon />
                 </IconButton>
               </Tooltip>

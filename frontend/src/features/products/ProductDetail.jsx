@@ -60,6 +60,7 @@ export default function ProductDetail() {
       name: product.name,
       price: product.price,
       image: product.images[0],
+      stock: product.stock,
       quantity: 1,
       totalPrice: product.price * 1,
     };

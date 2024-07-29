@@ -8,10 +8,20 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { useSelector } from "react-redux";
 
-import { formatCurrency } from "../../utils/helpers";
+import { calculatePrices, formatCurrency } from "../../utils/helpers";
+import { getCartItems, getCartItemsTotalPrice } from "./cartSlice";
 
 export default function CartSummary() {
+  const cartItems = useSelector(getCartItems);
+  const cartItemsTotalPrice = useSelector(getCartItemsTotalPrice);
+
+  const numCartItems = cartItems?.length;
+
+  const { discountPrice, taxPrice, shippingPrice, totalPrice } =
+    calculatePrices(cartItemsTotalPrice, numCartItems);
+
   return (
     <TableContainer component={Paper} variant="outlined">
       <Table
@@ -30,10 +40,13 @@ export default function CartSummary() {
         <TableBody>
           <TableRow>
             <TableCell component="th" scope="row">
-              Subtotal &#x28;4 items&#x29;
+              Subtotal &#x28;{numCartItems} item
+              {numCartItems > 1 && "s"}&#x29;
             </TableCell>
 
-            <TableCell align="right">{formatCurrency(2646)}</TableCell>
+            <TableCell align="right">
+              {formatCurrency(cartItemsTotalPrice)}
+            </TableCell>
           </TableRow>
 
           <TableRow>
@@ -42,7 +55,7 @@ export default function CartSummary() {
             </TableCell>
 
             <TableCell align="right" sx={{ color: "error.main" }}>
-              {formatCurrency(-350)}
+              {formatCurrency(discountPrice)}
             </TableCell>
           </TableRow>
 
@@ -51,7 +64,7 @@ export default function CartSummary() {
               Taxes &amp; Charges
             </TableCell>
 
-            <TableCell align="right">{formatCurrency(24)}</TableCell>
+            <TableCell align="right">{formatCurrency(taxPrice)}</TableCell>
           </TableRow>
 
           <TableRow>
@@ -59,8 +72,11 @@ export default function CartSummary() {
               Delivery Charges
             </TableCell>
 
-            <TableCell align="right" sx={{ color: "success.main" }}>
-              FREE
+            <TableCell
+              align="right"
+              sx={!shippingPrice > 0 && { color: "success.main" }}
+            >
+              {shippingPrice > 0 ? formatCurrency(shippingPrice) : "FREE"}
             </TableCell>
           </TableRow>
 
@@ -69,7 +85,7 @@ export default function CartSummary() {
               Total
             </TableCell>
             <TableCell align="right" sx={{ fontWeight: "bold" }}>
-              {formatCurrency(2320)}
+              {formatCurrency(totalPrice)}
             </TableCell>
           </TableRow>
 
