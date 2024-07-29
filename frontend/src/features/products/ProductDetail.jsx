@@ -8,7 +8,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 import BreadcrumbsNavigation from "../../components/BreadcrumbsNavigation";
 import {
@@ -19,11 +20,15 @@ import {
 import ProductImage from "../../components/ProductImage";
 import { useGetProductDetailsQuery } from "../../services/productsApiSlice";
 import { formatCurrency } from "../../utils/helpers";
+import { addItemToCart } from "../cart/cartSlice";
 import ProductReviews from "./ProductReviews";
 import RelatedProducts from "./RelatedProducts";
 
 export default function ProductDetail() {
   const { id: productId } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   const {
     data: product,
@@ -35,18 +40,37 @@ export default function ProductDetail() {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  const hasStock = product?.stock > 0;
+  const hasStock = product.stock > 0;
+  const isInCart = cartItems.find((item) => item._id === product._id);
 
   const breadcrumbsLinks = [
     { label: "Home", type: "link", url: "/" },
     { label: "Products", type: "link", url: "/products" },
     {
-      label: product?.category,
+      label: product.category,
       type: "link",
-      url: `/products?category=${product?.category}`,
+      url: `/products?category=${product.category}`,
     },
-    { label: product?.name, type: "text" },
+    { label: product.name, type: "text" },
   ];
+
+  const handleAddToCart = () => {
+    const newItem = {
+      _id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      quantity: 1,
+      totalPrice: product.price * 1,
+    };
+
+    dispatch(addItemToCart(newItem));
+  };
+
+  const handleBuyNow = () => {
+    !isInCart && handleAddToCart();
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -56,16 +80,16 @@ export default function ProductDetail() {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <ProductImage
-              src={product?.images[0]}
+              src={product.images[0]}
               size="350"
-              alt={product?.name}
+              alt={product.name}
             />
           </Grid>
 
           <Grid item xs={12} md={6}>
             <Box mt={1.25}>
               <Typography component="h2" variant="h5" mb={1}>
-                {product?.name}
+                {product.name}
               </Typography>
 
               <Stack
@@ -75,7 +99,7 @@ export default function ProductDetail() {
                 mb={1.8}
               >
                 <Typography variant="body2" textTransform="capitalize">
-                  {product?.category}
+                  {product.category}
                 </Typography>
 
                 <Typography variant="body2">
@@ -114,19 +138,24 @@ export default function ProductDetail() {
                 <Typography component="h6" fontWeight="600">
                   Description
                 </Typography>
-                <Typography>{product?.description}</Typography>
+                <Typography>{product.description}</Typography>
               </Stack>
 
               <Stack spacing={2}>
-                <Button variant="contained" disabled={!hasStock}>
-                  Buy now
+                <Button
+                  variant="contained"
+                  disabled={!hasStock}
+                  onClick={handleBuyNow}
+                >
+                  Buy Now
                 </Button>
                 <Button
                   variant="outlined"
                   disabled={!hasStock}
                   startIcon={<AddShoppingCartIcon />}
+                  onClick={handleAddToCart}
                 >
-                  Add to cart
+                  Add to Cart
                 </Button>
               </Stack>
             </Box>
@@ -134,11 +163,11 @@ export default function ProductDetail() {
         </Grid>
       </Container>
 
-      <ProductReviews reviews={product?.reviews} />
+      <ProductReviews reviews={product.reviews} />
 
       <RelatedProducts
-        currentProductId={product?._id}
-        currentProductCategory={product?.category}
+        currentProductId={product._id}
+        currentProductCategory={product.category}
       />
     </>
   );
