@@ -1,8 +1,10 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 
 import connectDB from "./config/db.js";
 import errorHandler from "./middleware/errorHandler.js";
 import notFound from "./middleware/notFound.js";
+import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
 const app = express();
@@ -10,7 +12,13 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 // Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
 // Not Found Middleware
