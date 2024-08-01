@@ -19,11 +19,24 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   generateToken(res, newUser._id);
 
-  res.status(201).json({
-    _id: newUser._id,
-    firstName: newUser.firstName,
-    lastName: newUser.lastName,
-    email: newUser.email,
-    role: newUser.role,
-  });
+  res.status(201).json(newUser.removePassword());
+});
+
+// @desc    Login user
+// @route   POST /api/auth/login
+// @access  Public
+export const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password)
+    throw new AppError("Please provide email and password", 400);
+
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user || !(await user.matchPassword(password)))
+    throw new AppError("Incorrect email or password", 401);
+
+  generateToken(res, user.id);
+
+  res.status(200).json(user.removePassword());
 });
