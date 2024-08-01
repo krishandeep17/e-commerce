@@ -40,3 +40,11 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   res.status(200).json(user.removePassword());
 });
+
+// @desc    Logout user
+// @route   POST /api/auth/logout
+// @access  Public
+export const logoutUser = asyncHandler(async (req, res) => {
+  res.clearCookie("jwt");
+  res.status(200).json({ message: "Logged out successfully" });
+});
