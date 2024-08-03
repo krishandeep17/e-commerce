@@ -15,7 +15,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const newUser = await User.create({ firstName, lastName, email, password });
 
-  if (!newUser) throw new AppError("Invalid user data", 400);
+  if (!newUser) throw new AppError("Invalid user data.", 400);
 
   generateToken(res, newUser._id);
 
@@ -29,12 +29,12 @@ export const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password)
-    throw new AppError("Please provide email and password", 400);
+    throw new AppError("Please provide email and password.", 400);
 
   const user = await User.findOne({ email }).select("+password");
 
   if (!user || !(await user.matchPassword(password)))
-    throw new AppError("Incorrect email or password", 401);
+    throw new AppError("Incorrect email or password.", 401);
 
   generateToken(res, user.id);
 
@@ -44,7 +44,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 // @desc    Logout user
 // @route   POST /api/auth/logout
 // @access  Public
-export const logoutUser = asyncHandler(async (req, res) => {
+export const logoutUser = (req, res) => {
   res.clearCookie("jwt");
-  res.status(200).json({ message: "Logged out successfully" });
-});
+  res.status(200).json({ message: "Logged out successfully." });
+};

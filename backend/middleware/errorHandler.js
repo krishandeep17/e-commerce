@@ -26,7 +26,21 @@ export default function errorHandler(err, req, res, next) {
     );
 
     statusCode = 400;
-    message = `Invalid input data. ${errorMessages.join(". ")}`;
+    message = `Invalid input data. ${errorMessages.join(". ")}.`;
+    isOperational = true;
+  }
+
+  // Handle JWT Error
+  if (err.name === "JsonWebTokenError") {
+    statusCode = 401;
+    message = "Invalid token. Please log in again!";
+    isOperational = true;
+  }
+
+  // Handle JWT Expired Error
+  if (err.name === "TokenExpiredError") {
+    statusCode = 401;
+    message = "Your token has expired. Please log in again!";
     isOperational = true;
   }
 

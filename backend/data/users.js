@@ -7,7 +7,7 @@ const users = [
     email: "admin@email.com",
     password: bcrypt.hashSync("12345678", 12),
     avatar: "https://i.pravatar.cc/150?img=52",
-    isAdmin: true,
+    role: "admin",
   },
   {
     firstName: "John",
@@ -15,6 +15,7 @@ const users = [
     email: "john@email.com",
     password: bcrypt.hashSync("12345678", 12),
     avatar: "https://i.pravatar.cc/150?img=69",
+    role: "seller",
   },
   {
     firstName: "Jane",
