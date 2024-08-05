@@ -15,8 +15,6 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const newUser = await User.create({ firstName, lastName, email, password });
 
-  if (!newUser) throw new AppError("Invalid user data.", 400);
-
   generateToken(res, newUser._id);
 
   res.status(201).json(newUser.removePassword());
@@ -42,9 +40,24 @@ export const loginUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Logout user
-// @route   POST /api/auth/logout
+// @route   GET /api/auth/logout
 // @access  Public
 export const logoutUser = (req, res) => {
   res.clearCookie("jwt");
   res.status(200).json({ message: "Logged out successfully." });
 };
+
+// @desc    Update current user's password
+// @route   PATCH /api/users/updateMyPassword
+// @access  Private
+export const updatePassword = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).select("+password");
+
+  user.password = req.body.password || user.password;
+
+  await user.save();
+
+  generateToken(res, user._id);
+
+  res.status(200).json(user.removePassword());
+});

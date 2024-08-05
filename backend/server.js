@@ -6,6 +6,7 @@ import errorHandler from "./middleware/errorHandler.js";
 import notFound from "./middleware/notFound.js";
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // Not Found Middleware
 app.use(notFound);

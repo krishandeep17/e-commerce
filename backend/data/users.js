@@ -1,11 +1,9 @@
-import bcrypt from "bcryptjs";
-
 const users = [
   {
     firstName: "Admin",
     lastName: "User",
     email: "admin@email.com",
-    password: bcrypt.hashSync("12345678", 12),
+    password: "12345678",
     avatar: "https://i.pravatar.cc/150?img=52",
     role: "admin",
   },
@@ -13,7 +11,7 @@ const users = [
     firstName: "John",
     lastName: "Doe",
     email: "john@email.com",
-    password: bcrypt.hashSync("12345678", 12),
+    password: "12345678",
     avatar: "https://i.pravatar.cc/150?img=69",
     role: "seller",
   },
@@ -21,7 +19,7 @@ const users = [
     firstName: "Jane",
     lastName: "Doe",
     email: "jane@email.com",
-    password: bcrypt.hashSync("12345678", 12),
+    password: "12345678",
     avatar: "https://i.pravatar.cc/150?img=47",
   },
 ];

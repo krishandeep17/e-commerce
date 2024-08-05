@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const generateToken = (res, userId) => {
+export default function generateToken(res, userId) {
   const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_COOKIE_EXPIRES_IN_DAYS + "d",
   });
@@ -12,6 +12,4 @@ const generateToken = (res, userId) => {
     secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
     sameSite: "strict", // Prevent CSRF attacks
   });
-};
-
-export default generateToken;
+}

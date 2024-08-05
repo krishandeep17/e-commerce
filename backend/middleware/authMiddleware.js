@@ -5,6 +5,7 @@ import User from "../models/userModel.js";
 import AppError from "../utils/appError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
+// Middleware to protect routes
 export const protect = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -12,7 +13,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   if (!token)
     throw new AppError(
-      "You are not logged in! Please login to get access",
+      "You are not logged in! Please login to get access.",
       401
     );
 
@@ -20,21 +21,26 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   const currentUser = await User.findById(decoded.id);
 
-  if (!currentUser) throw new AppError("User no longer exits.", 401);
+  if (!currentUser) {
+    res.clearCookie("jwt");
+
+    throw new AppError("User no longer exists.", 401);
+  }
 
   req.user = currentUser;
 
   next();
 });
 
-export const authorize =
-  (...roles) =>
-  (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
+// Middleware to restrict to authorize users
+export function authorize(...roles) {
+  return (req, res, next) => {
+    if (roles.includes(req.user.role)) {
+      next();
+    } else {
+      next(
         new AppError("You do not have permission to perform this action.", 403)
       );
     }
-
-    next();
   };
+}
