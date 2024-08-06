@@ -1,14 +1,23 @@
 import express from "express";
 
 import {
+  createProduct,
+  deleteProduct,
   getAllProducts,
-  getProductById,
+  getProduct,
+  updateProduct,
 } from "../controllers/productController.js";
+import { authorize, protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.route("/").get(getAllProducts);
+router.get("/", getAllProducts);
+router.get("/:id", getProduct);
 
-router.route("/:id").get(getProductById);
+// Middleware to restrict authorized users
+router.use(protect, authorize("admin", "seller"));
+
+router.post("/", createProduct);
+router.route("/:id").patch(updateProduct).delete(deleteProduct);
 
 export default router;
