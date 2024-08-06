@@ -11,7 +11,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const userExists = await User.findOne({ email });
 
-  if (userExists) throw new AppError("User already exists", 400);
+  if (userExists) throw new AppError("User already exists.", 400);
 
   const newUser = await User.create({ firstName, lastName, email, password });
 
@@ -27,7 +27,7 @@ export const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password)
-    throw new AppError("Please provide email and password.", 400);
+    throw new AppError("Please provide your email address and password.", 400);
 
   const user = await User.findOne({ email }).select("+password");
 
@@ -51,9 +51,13 @@ export const logoutUser = (req, res) => {
 // @route   PATCH /api/users/updateMyPassword
 // @access  Private
 export const updatePassword = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+
+  if (!password) throw new AppError("Please provide a password.", 400);
+
   const user = await User.findById(req.user._id).select("+password");
 
-  user.password = req.body.password || user.password;
+  user.password = password;
 
   await user.save();
 

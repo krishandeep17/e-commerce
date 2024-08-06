@@ -32,7 +32,7 @@ export const protect = asyncHandler(async (req, res, next) => {
   next();
 });
 
-// Middleware to restrict to authorize users
+// Middleware to restrict authorized users
 export function authorize(...roles) {
   return (req, res, next) => {
     if (roles.includes(req.user.role)) {

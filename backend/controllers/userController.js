@@ -35,7 +35,7 @@ export const deleteCurrentUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "User deleted successfully." });
 });
 
-// @desc    Get all Users
+// @desc    Get all users
 // @route   GET /api/users
 // @access  Private | Admin
 export const getAllUsers = asyncHandler(async (req, res) => {
@@ -66,7 +66,7 @@ export const createUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get single user
-// @route   POST /api/users/:id
+// @route   GET /api/users/:id
 // @access  Private | Admin
 export const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
@@ -87,12 +87,13 @@ export const updateUser = asyncHandler(async (req, res) => {
   user.firstName = req.body.firstName || user.firstName;
   user.lastName = req.body.lastName || user.lastName;
   user.email = req.body.email || user.email;
-  user.password = req.body.password || user.password;
   user.role = req.body.role || user.role;
+
+  if (req.body.password) user.password = req.body.password;
 
   await user.save();
 
-  res.status(200).json(user);
+  res.status(200).json(user.removePassword());
 });
 
 // @desc    Delete user
@@ -105,5 +106,5 @@ export const deleteUser = asyncHandler(async (req, res) => {
 
   await user.deleteOne();
 
-  res.status(200).json({ message: "User deleted successfully" });
+  res.status(200).json({ message: "User deleted successfully." });
 });
